@@ -24,6 +24,7 @@ func TestSlackJsonUnmarshalling(t *testing.T) {
 		IconUrl:     icon_url,
 		IconEmoji:   icon_emoji,
 		Text:        text,
+		Url:         url,
 		Enabled:     true,
 		Detailed:    true,
 	}

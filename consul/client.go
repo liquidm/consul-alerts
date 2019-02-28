@@ -311,7 +311,6 @@ func (c *ConsulAlertClient) UpdateCheckData() {
 	for index := range reminderKeys {
 		log.Printf("checking for stale reminders")
 		s := strings.Split(reminderKeys[index].Key, "/")
-
 		// check if the consul-alerts/reminders/ folder has sub folders
 		if len(s) >= remindersSubsLevel {
 			node, check := s[2], s[3]
