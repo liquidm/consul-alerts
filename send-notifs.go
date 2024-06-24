@@ -15,11 +15,12 @@ import (
 // NotifEngine handles notifications.
 //
 // To start NotifEngine:
-//     notifEngine := startNotifEngine()
+//
+//	notifEngine := startNotifEngine()
 //
 // Tp stop NotifEngine (for cleanup):
-//     notifEngine.stop()
 //
+//	notifEngine.stop()
 type NotifEngine struct {
 	inChan    chan notifier.Messages
 	closeChan chan struct{}

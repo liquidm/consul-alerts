@@ -24,7 +24,7 @@ func (logNotifier *LogNotifier) Copy() Notifier {
 	return &notifier
 }
 
-//Notify sends messages to the endpoint notifier
+// Notify sends messages to the endpoint notifier
 func (logNotifier *LogNotifier) Notify(alerts Messages) bool {
 
 	logrus.Println("logging messages...")

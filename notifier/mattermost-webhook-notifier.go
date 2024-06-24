@@ -32,7 +32,7 @@ func (n *MattermostWebhookNotifier) Copy() Notifier {
 	return &notifier
 }
 
-//Notify sends messages to the endpoint notifier
+// Notify sends messages to the endpoint notifier
 func (n *MattermostWebhookNotifier) Notify(messages Messages) bool {
 	return n.notifySimple(messages)
 }
