@@ -20,7 +20,7 @@ import (
 	"github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/docopt/docopt-go"
 )
 
-const version = "Consul Alerts 0.5.0"
+const version = "Consul Alerts 0.6.1 (lqm fork)"
 const usage = `Consul Alerts.
 
 Usage:
@@ -170,10 +170,10 @@ func daemonMode(arguments map[string]interface{}) {
 	log.Println("Started Consul-Alerts API")
 
 	if watchChecks {
-		go runWatcher(consulAddr, consulDc, addr, loglevelString, "checks")
+		go runWatcher(consulAddr, consulDc, addr, loglevelString, consulAclToken, "checks")
 	}
 	if watchEvents {
-		go runWatcher(consulAddr, consulDc, addr, loglevelString, "event")
+		go runWatcher(consulAddr, consulDc, addr, loglevelString, consulAclToken, "event")
 	}
 
 	ch := make(chan os.Signal)
@@ -249,6 +249,7 @@ func builtinNotifiers() map[string]notifier.Notifier {
 	opsgenieNotifier := consulClient.OpsGenieNotifier()
 	awssnsNotifier := consulClient.AwsSnsNotifier()
 	victoropsNotifier := consulClient.VictorOpsNotifier()
+	httpEndpointNotifier := consulClient.HttpEndpointNotifier()
 	ilertNotifier := consulClient.ILertNotifier()
 
 	notifiers := map[string]notifier.Notifier{}
@@ -284,6 +285,9 @@ func builtinNotifiers() map[string]notifier.Notifier {
 	}
 	if victoropsNotifier.Enabled {
 		notifiers[victoropsNotifier.NotifierName()] = victoropsNotifier
+	}
+	if httpEndpointNotifier.Enabled {
+		notifiers[httpEndpointNotifier.NotifierName()] = httpEndpointNotifier
 	}
 	if ilertNotifier.Enabled {
 		notifiers[ilertNotifier.NotifierName()] = ilertNotifier

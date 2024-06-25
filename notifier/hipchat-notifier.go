@@ -31,7 +31,7 @@ func (notifier *HipChatNotifier) Copy() Notifier {
 	return &n
 }
 
-//Notify sends messages to the endpoint notifier
+// Notify sends messages to the endpoint notifier
 func (notifier *HipChatNotifier) Notify(messages Messages) bool {
 
 	overallStatus, pass, warn, fail := messages.Summary()

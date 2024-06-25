@@ -36,7 +36,7 @@ func (emailNotifier *EmailNotifier) Copy() Notifier {
 	return &notifier
 }
 
-//Notify sends messages to the endpoint notifier
+// Notify sends messages to the endpoint notifier
 func (emailNotifier *EmailNotifier) Notify(alerts Messages) bool {
 
 	overAllStatus, pass, warn, fail := alerts.Summary()

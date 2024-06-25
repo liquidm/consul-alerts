@@ -24,7 +24,7 @@ func (influxdb *InfluxdbNotifier) Copy() Notifier {
 	return &notifier
 }
 
-//Notify sends messages to the endpoint notifier
+// Notify sends messages to the endpoint notifier
 func (influxdb *InfluxdbNotifier) Notify(messages Messages) bool {
 	config := &client.ClientConfig{
 		Host:     influxdb.Host,
